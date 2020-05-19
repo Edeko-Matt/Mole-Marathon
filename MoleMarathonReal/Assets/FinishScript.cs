@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class FinishScript : MonoBehaviour
 {
-
-    Rigidbody bush;
-    Vector3 bushPosition;
+    Rigidbody finish;
+    Vector3 finishPosition;
     Vector3 molePos;
     GameObject mole;
     Transform moleTransform;
@@ -15,15 +14,13 @@ public class FinishScript : MonoBehaviour
 
     void Start()
     {
-        bush = gameObject.GetComponent<Rigidbody>();
-        bush.useGravity = false;
-        bushPosition = new Vector3(10f, 0f, -1f);
+        finish = gameObject.GetComponent<Rigidbody>();
+        finish.useGravity = false;
+        finishPosition = new Vector3(13.67841f, 0.1441803f, -0.3049797f);
         mole = GameObject.FindGameObjectWithTag("character");
         moleTransform = mole.transform;
         molePos = moleTransform.position;
-
     }
-
 
     void Update()
     {
@@ -37,16 +34,11 @@ public class FinishScript : MonoBehaviour
 
     void finished()
     {
-        SceneManager.LoadScene("LevelSelect");
+        distance = Vector3.Distance(transform.position, molePos);
+        if (distance <= 1.2f)
+        {
+            SceneManager.LoadScene("Scenes/LevelSelect");
+        }
     }
 
-    IEnumerator Pause()
-    {
-        enabled = false;
-
-        yield return new WaitForSeconds(.7f);
-
-        enabled = true;
-
-    }
 }
