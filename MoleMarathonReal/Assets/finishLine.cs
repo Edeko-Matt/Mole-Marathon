@@ -17,7 +17,7 @@ public class finishLine : MonoBehaviour
     {
         finish = gameObject.GetComponent<Rigidbody>();
         finish.useGravity = false;
-        finishPosition = new Vector3(49.99f, 0.86f, 0f);
+        finishPosition = new Vector3(105.4f, 0.8f, 0f);
         mole = GameObject.FindGameObjectWithTag("character");
         moleTransform = mole.transform;
         molePos = moleTransform.position;
